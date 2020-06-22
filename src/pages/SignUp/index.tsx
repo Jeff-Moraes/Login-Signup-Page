@@ -37,6 +37,7 @@ const SignUp: React.FC = () => {
       formRef.current?.setErrors(errors);
     }
   }, []);
+
   return (
     <Container>
       <Background />
