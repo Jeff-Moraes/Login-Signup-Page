@@ -1,4 +1,5 @@
 import React, { useCallback, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { FiArrowLeft, FiMail, FiUser, FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -10,7 +11,7 @@ import logoImg from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import { Container, Content, Background } from './styles';
+import { Container, Content, Background, AnimationContainer } from './styles';
 
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
@@ -42,28 +43,35 @@ const SignUp: React.FC = () => {
     <Container>
       <Background />
       <Content>
-        <img src={logoImg} alt="Company Logo" />
-        <Form
-          // initialData={{ name: 'Your name here' }}
-          ref={formRef}
-          onSubmit={handleSubmit}
-        >
-          <h1>Create an Account</h1>
-          <Input name="name" type="text" icon={FiUser} placeholder="Name" />
-          <Input name="email" type="text" icon={FiMail} placeholder="E-mail" />
-          <Input
-            name="password"
-            type="password"
-            icon={FiLock}
-            placeholder="Password"
-          />
-          <Button type="submit">Continue</Button>
-        </Form>
+        <AnimationContainer>
+          <img src={logoImg} alt="Company Logo" />
+          <Form
+            // initialData={{ name: 'Your name here' }}
+            ref={formRef}
+            onSubmit={handleSubmit}
+          >
+            <h1>Create an Account</h1>
+            <Input name="name" type="text" icon={FiUser} placeholder="Name" />
+            <Input
+              name="email"
+              type="text"
+              icon={FiMail}
+              placeholder="E-mail"
+            />
+            <Input
+              name="password"
+              type="password"
+              icon={FiLock}
+              placeholder="Password"
+            />
+            <Button type="submit">Continue</Button>
+          </Form>
 
-        <a href="new">
-          <FiArrowLeft />
-          Already have an account?
-        </a>
+          <Link to="/">
+            <FiArrowLeft />
+            Already have an account?
+          </Link>
+        </AnimationContainer>
       </Content>
     </Container>
   );
